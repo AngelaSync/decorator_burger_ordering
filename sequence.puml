@@ -1,0 +1,20 @@
+@startuml
+
+actor Client
+
+participant "SauceDecorator" as Sauce
+participant "BaconDecorator" as Bacon
+participant "CheeseDecorator" as Cheese
+participant "BasicBurger" as Burger
+
+Client -> Sauce : getPrice()
+Sauce -> Bacon : getPrice()
+Bacon -> Cheese : getPrice()
+Cheese -> Burger : getPrice()
+
+Burger --> Cheese : 100.00
+Cheese --> Bacon : 120.00\n(+20.00)
+Bacon --> Sauce : 150.00\n(+30.00)
+Sauce --> Client : 160.00\n(+10.00)
+
+@enduml
